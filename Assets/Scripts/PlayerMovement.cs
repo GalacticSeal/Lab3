@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PlayerMovement : Movement2D
 {
+    Vector2 move;
+
     void FixedUpdate()
     {
         velocityX = Input.GetAxisRaw("Horizontal")*speed;
         velocityY = Input.GetAxisRaw("Vertical")*speed;
-        transform.position = new Vector2(transform.position.x+velocityX, transform.position.y+velocityY);
+        move = new Vector2(velocityX,velocityY);
+        transform.position = (Vector2) transform.position + Vector2.ClampMagnitude(move,speed);
 
         DetectTerrain();
         DetectBorder();
