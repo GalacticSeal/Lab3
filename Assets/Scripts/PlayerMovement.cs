@@ -16,6 +16,8 @@ public class PlayerMovement : Movement2D
         DetectTerrain();
         DetectBorder();
         if(DetectEnemy()) {
+            GameObject Spawner = GameObject.FindWithTag("EnemySpawner");
+            Spawner.GetComponent<EnemySpawner>().DestroyAll();
             Respawn();
         }
     }

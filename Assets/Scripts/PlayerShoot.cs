@@ -10,7 +10,7 @@ public class PlayerShoot : MonoBehaviour
     public GameObject ProjPrefab;
 
     private sbyte delayCount = 0; //would use framecount or time for efficiency, but WebGL works differently from the desktop build, making this method a safer choice
-    private static sbyte attackDelay = 29; //these two variables will be used to keep track of the delay between each attack, with the static sbyte being the minimum delay between attacks
+    private static sbyte attackDelay = 7; //these two variables will be used to keep track of the delay between each attack, with the static sbyte being the minimum delay between attacks
 
     private static float displacement = 0f;
 

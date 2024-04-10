@@ -24,8 +24,8 @@ public class EnemyHealth : MonoBehaviour
     }
 
     public void Death() {
-        //GameObject Spawner = GameObject.FindWithTag("MobSpawner");
-        //Spawner.GetComponent<EnemySpawner>().DeleteEnemy(gameObject);
+        GameObject Spawner = GameObject.FindWithTag("EnemySpawner");
+        Spawner.GetComponent<EnemySpawner>().DestroyEnemy(gameObject);
         Destroy(this.gameObject);
     }
 }
