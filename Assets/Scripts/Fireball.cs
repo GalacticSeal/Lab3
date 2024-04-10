@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
-    private float speed = 0.35f;
+    [SerializeField] private float speed = 0.35f;
     private CircleCollider2D hitbox;
     private RaycastHit2D[] hit = new RaycastHit2D[10];
     private bool selfDestruct = false;
@@ -17,7 +17,7 @@ public class Fireball : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position += (transform.TransformDirection(Vector3.right)) * speed;
+        transform.position += (transform.TransformDirection(Vector3.up)) * speed;
         if (Mathf.Abs(transform.position.x) > maxDistance || Mathf.Abs(transform.position.y) > maxDistance) {
             Destroy(gameObject);
         }
@@ -27,6 +27,8 @@ public class Fireball : MonoBehaviour
             if(hit[i].collider != null) {
                 if(hit[i].collider.GetComponent<EnemyHealth>() != null) {
                     hit[i].collider.GetComponent<EnemyHealth>().ReceiveDamage();
+                    selfDestruct = true;
+                } else if(hit[i].collider.tag == "Terrain") {
                     selfDestruct = true;
                 }
             }
